@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+    
+
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView1"
+        android:layout_marginBottom="25dp"
+        android:layout_toLeftOf="@+id/textView1"
+        android:text="Start" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStart"
+        android:layout_marginTop="46dp"
+        android:layout_toRightOf="@+id/btnStart"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+    
+</RelativeLayout>
