@@ -1,11 +1,14 @@
 package com.example.srecord;
 
+import java.util.Locale;
+
 import android.app.Activity;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -19,7 +22,7 @@ public class MainActivity extends Activity {
 	private AudioRecord recorder = null;
 	private Thread recordingThread = null;
 	private boolean isRecording = false;
-	private TextToSpeech tts;
+	//private TextToSpeech tts;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -33,19 +36,8 @@ public class MainActivity extends Activity {
 				RECORDER_CHANNELS, RECORDER_AUDIO_ENCODING);
 
 
-//		tts = new TextToSpeech(this, this);
-		//Refer 'Speak' button
-		//btnSpeak = (Button) findViewById(R.id.btnSpeak);
-		//Refer 'Text' control
+		//tts = new TextToSpeech(this, (OnInitListener) this);
 		//txtText = (EditText) findViewById(R.id.txtText);
-		//Handle onClick event for button 'Speak'
-		//btnSpeak.setOnClickListener(new View.OnClickListener() {
-
-		//    public void onClick(View arg0) {
-		//Method yet to be defined
-//		String text = "hi there";
-//		speakOut(text);
-		//  }});
 	}
 
 	private void setButtonHandlers() {
@@ -139,9 +131,9 @@ public class MainActivity extends Activity {
 			double magnitude= getMagnitude(y);
 			int a=(int)magnitude;
 
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 			
-			speakOut("Magnitude is " + a);
+		//	speakOut("Magnitude is ");
 
 			Log.d("Magnitude: ", " "+a);
 		}
@@ -153,17 +145,17 @@ public class MainActivity extends Activity {
     }*/
 	}
 
-	private void speakOut(String text) {
+	/*private void speakOut(String text) {
 		//Get the text typed
 		// String text = txtText.getText().toString();
 		//If no text is typed, tts will read out 'You haven't typed text'
 		//else it reads out the text you typed
 		if (text.length() == 0) {
-			tts.speak("You haven't typed text", TextToSpeech.QUEUE_FLUSH, null);
+			tts.speak("You haven't typed text", TextToSpeech.QUEUE_ADD, null);
 		} else {
-			tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+			tts.speak(text, TextToSpeech.QUEUE_ADD, null);
 		}
-	}
+	}*/
 
 
 	public static double getMagnitude(Complex[] N)
@@ -211,4 +203,11 @@ public class MainActivity extends Activity {
 		}
 		return super.onKeyDown(keyCode, event);
 	}
+	
+/*	public void onInit(int initStatus) {
+	    if (initStatus == TextToSpeech.SUCCESS) {
+	        tts.setLanguage(Locale.US);
+	    }
+	}*/
+	
 }
